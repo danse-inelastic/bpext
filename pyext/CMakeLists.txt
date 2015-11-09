@@ -10,7 +10,7 @@ set ( SRC_FILES
 # ----------------------------------------
 
 # alias
-set ( MOD_NAME ${PYBINDING_NAME} )
+set ( MOD_NAME _${PYBINDING_NAME} )
 
 # create empty portinfo (pyre-config thing)
 execute_process(
