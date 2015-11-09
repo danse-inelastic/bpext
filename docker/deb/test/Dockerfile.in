@@ -5,3 +5,8 @@ MAINTAINER "Jiao Lin <jiao.lin@gmail.com>"
 RUN apt-get install wget
 RUN wget ${GITHUB_URL}/releases/download/v${VERSION}/${PKG_NAME}-${VERSION}-${CPACK_PACKAGE_RELEASE}.x86_64.deb
 RUN dpkg -i ${PKG_NAME}-${VERSION}-${CPACK_PACKAGE_RELEASE}.x86_64.deb
+
+RUN mkdir work
+WORKDIR work
+RUN git clone ${GITHUB_URL} src
+RUN . /opt/danse/bin/setup-danse.sh && python src/tests/bpext/bpext_TestCase.py
