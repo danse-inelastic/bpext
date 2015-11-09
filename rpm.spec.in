@@ -11,12 +11,12 @@ BuildRequires:  gcc-c++
 BuildRequires:	cmake > 2.6
 BuildRequires:	make
 BuildRequires:  python-devel
-BuildRequires:  libboost-python-dev 
-BuildRequires:  libboost-python1.55.0
+BuildRequires:  boost-dev 
+BuildRequires:  boost-python
 
 Requires: python
-Requires: libboost-python-dev
-Requires: libboost-python1.55.0
+Requires:  boost-dev 
+Requires:  boost-python
 Requires: danse.ins
 
 %description
