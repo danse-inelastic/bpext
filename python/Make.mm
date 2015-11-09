@@ -16,14 +16,9 @@ PROJECT = bpext
 # directory structure
 
 BUILD_DIRS = \
-    lib \
-    pyext \
-    python \
-    _examplebpbinding \
+    bpext \
 
 OTHER_DIRS = \
-#    tests \
-#    examples
 
 RECURSE_DIRS = $(BUILD_DIRS) $(OTHER_DIRS)
 
