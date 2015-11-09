@@ -6,7 +6,7 @@ RUN apt-get update
 RUN apt-get install -y git build-essential
 RUN apt-get install -y cmake
 RUN apt-get install -y python python-dev
-RUN apt-get install -y python-numpy
+RUN apt-get install -y libboost-python-dev libboost-python1.55.0
 
 
 RUN apt-get install wget
