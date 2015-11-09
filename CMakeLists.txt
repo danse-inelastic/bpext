@@ -50,6 +50,7 @@ enable_testing()
 # subdirs
 add_subdirectory(lib)
 add_subdirectory(pyext)
+add_subdirectory(_examplebpbinding)
 add_subdirectory(python)
 add_subdirectory(tests)
 
