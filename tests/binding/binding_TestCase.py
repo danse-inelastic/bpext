@@ -13,6 +13,8 @@
 
 
 import unittest
+from danse.ins.bpext import _bpext as binding
+from danse.ins.bpext import _examplebpbinding as example
 
 
 from unittestX import TestCase
@@ -20,8 +22,6 @@ class binding_TestCase(TestCase):
 
     def test1(self):
         "bpext binding"
-        import bpext._bpext as binding
-        import bpext._examplebpbinding as example
         v = example.vec_d(5)
         v[:] = 0,1,0,3,0
         p = binding.extract_ptr( v, 'vec_double' )
@@ -33,8 +33,6 @@ class binding_TestCase(TestCase):
     
     def test2(self):
         "bpext binding"
-        import bpext._bpext as binding
-        import bpext._examplebpbinding as example
         v = example.new_vec_d(5)
         v[:] = 0,1,0,3,0
         p = binding.extract_ptr( v, 'vec_double' )
@@ -52,7 +50,6 @@ def pysuite():
     return unittest.TestSuite( (suite1,) )
 
 def main():
-    import journal
     pytests = pysuite()
     alltests = unittest.TestSuite( (pytests, ) )
     unittest.TextTestRunner(verbosity=2).run(alltests)

@@ -11,8 +11,10 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
 
+USE_PYRE = 0
 
 import unittest
+from danse.ins import bpext
 
 
 from unittestX import TestCase
@@ -20,8 +22,7 @@ class bpext_TestCase(TestCase):
 
     def test1(self):
         "bpext bpext"
-        import bpext
-        import bpext._examplebpbinding as example
+        from danse.ins.bpext import _examplebpbinding as example
         v = example.vec_d(5)
         v[:] = 0,1,0,3,0
         p = bpext.extract_ptr( v, 'vec_double' )
@@ -33,11 +34,12 @@ class bpext_TestCase(TestCase):
 
     def test2(self):
         "bpext: double array"
-        import journal
-        journal.debug('wrap_native_ptr').activate()
-        journal.debug('extract_native_ptr').activate()
+        if USE_PYRE:
+            import journal
+            journal.debug('wrap_native_ptr').activate()
+            journal.debug('extract_native_ptr').activate()
         
-        import bpext._bpext as binding
+        from danse.ins.bpext import _bpext as binding
         arr = binding.newdblarr(10)
         print arr
 
@@ -57,7 +59,8 @@ def pysuite():
     return unittest.TestSuite( (suite1,) )
 
 def main():
-    import journal
+    if USE_PYRE:
+        import journal
     pytests = pysuite()
     alltests = unittest.TestSuite( (pytests, ) )
     unittest.TextTestRunner(verbosity=2).run(alltests)
