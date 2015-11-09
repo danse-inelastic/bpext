@@ -15,7 +15,7 @@ BuildRequires:  boost-devel
 BuildRequires:  boost-python
 
 Requires: python
-Requires:  boost-dev 
+Requires:  boost-devel
 Requires:  boost-python
 Requires: danse.ins
 
