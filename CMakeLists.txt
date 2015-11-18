@@ -14,8 +14,15 @@ set(GITHUB_URL "https://github.com/danse-inelastic/bpext")
 # package repository at packagecloud
 set (PKGCLOUD_USERNAME "danse")
 set (PKGCLOUD_REPO "ins")
+# debian
+set(DOCKER_PKGING_DEB_DIST_NAME "ubuntu")
+set(DOCKER_PKGING_DEB_DIST_VERSION "12.04")
 # dependencies
-set (DOCKER_PKGING_DEPS_DEB "libboost-python-dev libboost-python1.55.0 danse.ins")
+if ("${DOCKER_PKGING_DEB_DIST_VERSION}" STREQUAL "12.04")
+  set (DOCKER_PKGING_DEPS_DEB "libboost-python-dev libboost-python1.48.0 danse.ins")
+elseif ("${DOCKER_PKGING_DEB_DIST_VERSION}" STREQUAL "14.04")
+  set (DOCKER_PKGING_DEPS_DEB "libboost-python-dev libboost-python1.55.0 danse.ins")
+endif()
 set (DOCKER_PKGING_DEPS_RPM "boost-devel boost-python danse.ins")
 set (DOCKER_PKGING_PREPARE_FOR_TEST_SRPM "RUN git clone ${GITHUB_URL} src-fortest")
 set (DOCKER_PKGING_TEST_SRPM ". /opt/danse/bin/setup-danse.sh && python src-fortest/tests/bpext/bpext_TestCase.py")
@@ -83,7 +90,12 @@ set(CPACK_PACKAGE_VENDOR ${VENDOR})
 set(CPACK_PACKAGING_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX})
 set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${CPACK_PACKAGE_RELEASE}.${CMAKE_SYSTEM_PROCESSOR}")
 set(CPACK_RPM_PACKAGE_REQUIRES "cmake")
-set(CPACK_DEBIAN_PACKAGE_DEPENDS "python, libboost-python-dev, libboost-python1.55.0, danse.ins")
+if ("${DOCKER_PKGING_DEB_DIST_VERSION}" STREQUAL "12.04")
+  set(CPACK_DEBIAN_PACKAGE_DEPENDS "python, libboost-python-dev, libboost-python1.48.0, danse.ins")
+elseif ("${DOCKER_PKGING_DEB_DIST_VERSION}" STREQUAL "14.04")
+  set(CPACK_DEBIAN_PACKAGE_DEPENDS "python, libboost-python-dev, libboost-python1.55.0, danse.ins")
+endif()
+
 include(CPack)
 
 # source tar ball
