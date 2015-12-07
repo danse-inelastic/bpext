@@ -16,7 +16,7 @@ set (PKGCLOUD_USERNAME "danse")
 set (PKGCLOUD_REPO "ins")
 # debian
 set(DOCKER_PKGING_DEB_DIST_NAME "ubuntu")
-set(DOCKER_PKGING_DEB_DIST_VERSION "12.04")
+set(DOCKER_PKGING_DEB_DIST_VERSION "14.04")
 # dependencies
 if ("${DOCKER_PKGING_DEB_DIST_VERSION}" STREQUAL "12.04")
   set (DOCKER_PKGING_DEPS_DEB "libboost-python-dev libboost-python1.48.0 danse.ins")
