@@ -10,8 +10,9 @@ set ( MOD_NAME _examplebpbinding )
 
 # -I and -L
 include_directories(${PYTHON_INCLUDE_DIRS})
-include_directories(${Boost_INCLUDE_DIR})
+include_directories(${Boost_INCLUDE_DIRS})
 include_directories(${CMAKE_BINARY_DIR}/lib/include/danse/ins)
+# link_directories(${Boost_LIBRARY_DIRS})
 link_directories(${CMAKE_BINARY_DIR}/lib)
 
 # compile shared library
