@@ -2,7 +2,7 @@
 # 
 
 
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 
 def copyright():
     return "bpext python module: Copyright (c) 2004-2018 Jiao Lin";
