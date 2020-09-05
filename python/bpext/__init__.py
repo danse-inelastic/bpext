@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # 
 
-__version__ = "0.1.3"
+__version__ = "0.1.4"
 
 def copyright():
     return "bpext python module: Copyright (c) 2004-2018 Jiao Lin";
