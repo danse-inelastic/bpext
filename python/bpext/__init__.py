@@ -15,7 +15,7 @@ def copyright():
     return "bpext pyre module: Copyright (c) 2004-2007 Jiao Lin"
 
 
-import _bpext as binding
+from . import _bpext as binding
 
 
 def extract_ptr(bpobject, typename):

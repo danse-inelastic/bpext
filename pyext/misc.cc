@@ -26,6 +26,7 @@
 
 #include "misc.h"
 #include "bpext/bpext.h"
+#include "capsulethunk.h"
 
 
 //-------------------- copyright --------------------
@@ -42,6 +43,8 @@ PyObject * pybpext_copyright(PyObject *, PyObject *)
     return Py_BuildValue("s", pybpext_copyright_note);
 }
     
+void pycapsule_donothing( PyObject *target)
+{}
 
 
 //-------------------- extract_ptr --------------------
@@ -123,10 +126,10 @@ PyObject * pybpext_extract_ptr(PyObject *, PyObject *args)
     return NULL;
   }
 
-  if (desc2==NULL) 
-    return PyCObject_FromVoidPtr( ptr, NULL );
-  else 
-    return PyCObject_FromVoidPtrAndDesc( ptr, desc2, NULL );
+  PyObject *ret = PyCapsule_New(ptr, NULL, pycapsule_donothing);
+  if (desc2!=NULL)
+    PyCapsule_SetContext(ret, desc2);
+  return ret;
 }
 
 
@@ -168,7 +171,7 @@ PyObject * pybpext_wrap_ptr(PyObject *, PyObject *args)
 
   using std::string;
 
-  if (!PyCObject_Check( obj )) {
+  if (!PyCapsule_CheckExact( obj )) {
     std::ostringstream oss;
     oss << "In " << __FILE__ << " line " << __LINE__ << ": "
 	<< "1st argument must be a PyCObject." 
@@ -177,7 +180,7 @@ PyObject * pybpext_wrap_ptr(PyObject *, PyObject *args)
 
     return NULL;
   }
-  void *ptr = PyCObject_AsVoidPtr( obj );
+  void *ptr = PyCapsule_GetPointer( obj, NULL );
 
   PyObject *bpobj;
 
@@ -264,7 +267,7 @@ PyObject * pybpext_wrap_native_ptr(PyObject *, PyObject *args)
 
   using std::string;
 
-  if (!PyCObject_Check( obj )) {
+  if (!PyCapsule_CheckExact( obj )) {
     std::ostringstream oss;
     oss << "In " << __FILE__ << " line " << __LINE__ << ": "
 	<< "1st argument must be a PyCObject." 
@@ -273,7 +276,7 @@ PyObject * pybpext_wrap_native_ptr(PyObject *, PyObject *args)
 
     return NULL;
   }
-  void *ptr = PyCObject_AsVoidPtr( obj );
+  void *ptr = PyCapsule_GetPointer( obj, NULL );
   using namespace bpext;
   WrappedPointer *wp = new WrappedPointer;
   wp->pointer = ptr;
@@ -392,7 +395,7 @@ PyObject * pybpext_extract_native_ptr(PyObject *, PyObject *args)
 #endif
 #endif
 
-  return PyCObject_FromVoidPtr( nptr, NULL );
+  return PyCapsule_New( nptr, NULL, pycapsule_donothing );
 }
 
 

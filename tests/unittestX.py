@@ -1,14 +1,6 @@
 #!/usr/bin/env python
 #
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#
-#                                   Jiao Lin
-#                      California Institute of Technology
-#              (C) 2005 All Rights Reserved  All Rights Reserved
-#
-# {LicenseText}
-#
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Jiao Lin <jiao.lin@gmail.com>
 #
 
 from unittest import *
