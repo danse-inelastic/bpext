@@ -1,14 +1,6 @@
 // -*- C++ -*-
 // 
-//  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// 
-//                               Jiao Lin
-//                        California Institute of Technology
-//                        (C) 2004  All Rights Reserved
-// 
-//  <LicenseText>
-// 
-//  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Jiao Lin <jiao.lin@gmail.com>
 // 
 
 // provide a way to create double C array. This is useful for tests.
@@ -24,11 +16,17 @@
 
 #include "bpext/bpext.h"
 #include "dblarr.h"
+#include "capsulethunk.h"
 
 
 void deleteDblArr( void *ptr )
 {
   double *arr = (double *)ptr;
+  delete [] arr;
+}
+void pycapsule_deleteDblArr( PyObject *target)
+{
+  double *arr = (double *)PyCapsule_GetPointer(target, NULL);
   delete [] arr;
 }
 
@@ -66,7 +64,9 @@ PyObject * pybpext_newdblarr(PyObject *, PyObject *args)
 
   double *arr = new double[ n ];
   void * ptr = arr;
-  return PyCObject_FromVoidPtr( ptr, deleteDblArr);
+  // return PyCObject_FromVoidPtr( ptr, deleteDblArr);
+  PyObject *obj = PyCapsule_New(ptr, NULL, pycapsule_deleteDblArr);
+  return obj;
 }
 
 

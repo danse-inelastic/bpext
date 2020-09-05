@@ -1,17 +1,16 @@
 #!/usr/bin/env python
 # 
 
-
 __version__ = "0.1.3"
 
 def copyright():
     return "bpext python module: Copyright (c) 2004-2018 Jiao Lin";
 
 
-import _bpext as binding
+from . import _bpext as binding
 
 
-def extract_ptr( bpobject, typename ):
+def extract_ptr(bpobject, typename):
     '''Extract pointer out of a boost python object and return a PyCObject
 holding that pointer. pointer is shared.
 
@@ -24,11 +23,11 @@ Examples:
 
   extract_ptr( bpo, 'vec_double' )
   '''
-    return binding.extract_ptr( bpobject, typename )
+    return binding.extract_ptr(bpobject, typename)
 
 
 
-def wrap_ptr( pycobject, typename ):
+def wrap_ptr(pycobject, typename):
     '''Wrap a pointer in a PyCObject to become a boost python object.
 pointer is shared.
 
@@ -41,10 +40,10 @@ Examples:
 
   wrap_ptr( pycobj, 'vec_double' )
   '''
-    return binding.wrap_ptr( pycobject, typename )
+    return binding.wrap_ptr(pycobject, typename)
 
 
-def wrap_native_ptr( pycobject ):
+def wrap_native_ptr(pycobject):
     '''Wrap a pointer of a native type (for example, double *)
 in a simple c struct which only contains one void pointer.
 Then return a boost python object of that c struct.
@@ -58,11 +57,11 @@ Examples:
 
   wrap_native_ptr( pycobj )
   '''
-    return binding.wrap_native_ptr( pycobject )
+    return binding.wrap_native_ptr(pycobject)
 
 
 
-def extract_native_ptr( bpobj ):
+def extract_native_ptr(bpobj):
     '''Extract a pointer of a native type (for example, double *)
 from a boost python object of WrappedPointer type.
 WrappedPointer is a simple struct that a member "pointer"
@@ -81,7 +80,7 @@ Examples:
 
   extract_native_ptr( bpobj )
   '''
-    return binding.extract_native_ptr( bpobj )
+    return binding.extract_native_ptr(bpobj)
 
 
 
