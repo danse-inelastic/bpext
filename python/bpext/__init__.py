@@ -1,18 +1,10 @@
 #!/usr/bin/env python
 # 
-#  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# 
-#                               Michael A.G. Aivazis
-#                        California Institute of Technology
-#                        (C) 1998-2004  All Rights Reserved
-# 
-#  <LicenseText>
-# 
-#  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# 
+
+__version__ = "0.1.3"
 
 def copyright():
-    return "bpext pyre module: Copyright (c) 2004-2007 Jiao Lin"
+    return "bpext python module: Copyright (c) 2004-2018 Jiao Lin";
 
 
 from . import _bpext as binding

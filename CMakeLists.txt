@@ -72,7 +72,8 @@ find_package ( PythonInterp REQUIRED )
 set(INSTALL_PY_PATH "${INSTALL_LIB_DIR}/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages")
 
 # needs boost python
-find_package ( Boost COMPONENTS python )
+find_package ( Boost REQUIRED )
+find_package ( BoostPython REQUIRED )
 
 #
 enable_testing()
