@@ -61,7 +61,7 @@ MOD_INIT(_bpext)
 {
     // create the module and add the functions
     PyObject * m;
-    MOD_DEF(m, "numpyext", pybpext_module__doc__, pybpext_methods)
+    MOD_DEF(m, "_bpext", pybpext_module__doc__, pybpext_methods)
     if (m == NULL)
         return MOD_ERROR_VAL;
 
