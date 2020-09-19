@@ -79,9 +79,9 @@ set(INSTALL_PY_PATH "${INSTALL_LIB_DIR}/python${PYTHON_VERSION_MAJOR}.${PYTHON_V
 # find_package ( BoostPython REQUIRED )
 set(PYVER_MAJORMINOR ${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR})
 find_package ( Boost COMPONENTS python${PYVER_MAJORMINOR} )
-IF (NOT ${Boost_FOUND})
+IF (NOT Boost_FOUND)
    find_package ( Boost COMPONENTS python${PYTHON_VERSION_MAJOR} REQUIRED )
-ENDIF (NOT ${Boost_FOUND})
+ENDIF (NOT Boost_FOUND)
 
 #
 enable_testing()
